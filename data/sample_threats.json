@@ -1,0 +1,68 @@
+[
+  {
+    "threat_id": "TG-WIN-001",
+    "cve_id": "CVE-2024-30078",
+    "title": "Windows Wi-Fi driver remote code execution advisory example",
+    "platform": "Windows",
+    "status": "Resolved",
+    "severity": "High",
+    "summary": "Educational record illustrating a Windows wireless networking vulnerability. Affected versions and patch applicability must be checked against Microsoft's current security update guide.",
+    "mitigation": "Check the installed Windows build and the official Microsoft Security Update Guide. Apply the relevant cumulative/security update through Windows Update or your managed update process; reboot if required and verify the patched build.",
+    "source_url": "https://msrc.microsoft.com/update-guide/"
+  },
+  {
+    "threat_id": "TG-LNX-001",
+    "cve_id": "CVE-2024-1086",
+    "title": "Linux kernel local privilege escalation advisory example",
+    "platform": "Linux",
+    "status": "Evolving",
+    "severity": "High",
+    "summary": "A Linux kernel vulnerability has been publicly discussed. Exposure depends on kernel version, distribution backports, configuration and vendor package status.",
+    "mitigation": "Identify the distribution and running kernel. Check the distribution's official security tracker for fixed package versions, install supported updates using the package manager, and reboot into the patched kernel where required.",
+    "source_url": "https://www.kernel.org/"
+  },
+  {
+    "threat_id": "TG-MAC-001",
+    "cve_id": "CVE-2023-42916",
+    "title": "Apple platform information disclosure advisory example",
+    "platform": "macOS",
+    "status": "Resolved",
+    "severity": "High",
+    "summary": "An Apple platform vulnerability advisory example. Applicability depends on the exact operating-system release and Apple's published security content.",
+    "mitigation": "Check the exact macOS version and Apple's security releases. Install the latest supported security update from System Settings, then verify the installed version.",
+    "source_url": "https://support.apple.com/en-us/100100"
+  },
+  {
+    "threat_id": "TG-AND-001",
+    "cve_id": "CVE-2024-0044",
+    "title": "Android platform security bulletin example",
+    "platform": "Android",
+    "status": "Active",
+    "severity": "High",
+    "summary": "Android security bulletin entries can affect components on specific Android versions and vendor builds. The Android security patch level determines applicability.",
+    "mitigation": "Check Android version, build number and security patch level. Install updates from the device manufacturer or managed-device administrator. Avoid sideloading untrusted update packages.",
+    "source_url": "https://source.android.com/docs/security/bulletin"
+  },
+  {
+    "threat_id": "TG-IOS-001",
+    "cve_id": "CVE-2023-41064",
+    "title": "Apple iOS image-processing advisory example",
+    "platform": "iOS",
+    "status": "Resolved",
+    "severity": "High",
+    "summary": "An iOS security advisory example. Check the affected and fixed releases in Apple's security content before deciding whether a device is exposed.",
+    "mitigation": "Check Settings > General > About for the iOS version and install the latest supported update from Settings > General > Software Update.",
+    "source_url": "https://support.apple.com/en-us/100100"
+  },
+  {
+    "threat_id": "TG-ALL-001",
+    "cve_id": "N/A",
+    "title": "Unpatched third-party software exposure",
+    "platform": "All",
+    "status": "Anticipated",
+    "severity": "Medium",
+    "summary": "Unsupported or outdated applications may become exposed when new vulnerabilities are disclosed. This is a general risk category, not a claim that a particular device is vulnerable.",
+    "mitigation": "Maintain a software inventory, subscribe to vendor advisories, prioritize supported versions, test updates, and remove applications that are no longer required.",
+    "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+  }
+]
