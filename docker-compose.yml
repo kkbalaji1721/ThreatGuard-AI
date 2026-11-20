@@ -1,3 +1,4 @@
+
 services:
   mongo:
     image: mongo:7
@@ -13,7 +14,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
-    networks: [threatguard-net]
+    networks:
+      - threatguard-net
 
   ollama:
     image: ollama/ollama:latest
@@ -21,20 +23,25 @@ services:
     restart: unless-stopped
     volumes:
       - ollama_data:/root/.ollama
-    networks: [threatguard-net]
-    profiles: ["local-llm"]
+    networks:
+      - threatguard-net
+    profiles:
+      - local-llm
 
-  backend:
+  app:
+    image: kkbalaji1721/threatguard-ai:latest
     build: .
-    container_name: threatguard-api
+    container_name: threatguard-app
     restart: unless-stopped
     env_file:
       - .env
     environment:
       MONGO_URI: mongodb://root:${MONGO_ROOT_PASSWORD:-change-this-local-password}@mongo:27017/?authSource=admin
       OLLAMA_BASE_URL: http://ollama:11434
+      API_URL: http://127.0.0.1:8000
     ports:
       - "8000:8000"
+      - "8501:8501"
     depends_on:
       mongo:
         condition: service_healthy
@@ -43,25 +50,8 @@ services:
       interval: 20s
       timeout: 5s
       retries: 5
-    networks: [threatguard-net]
-
-  frontend:
-    build: .
-    container_name: threatguard-ui
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      API_URL: http://backend:8000
-    command: ["streamlit", "run", "streamlit_app.py", "--server.port", "8501", "--server.address", "0.0.0.0"]
-    ports:
-      - "8501:8501"
-    volumes:
-      - ./streamlit_app.py:/app/streamlit_app.py:ro
-    depends_on:
-      backend:
-        condition: service_healthy
-    networks: [threatguard-net]
+    networks:
+      - threatguard-net
 
 volumes:
   mongo_data:
